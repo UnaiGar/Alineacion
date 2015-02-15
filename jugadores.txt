@@ -1,0 +1,22 @@
+-Espiño,fc barcelona,delantero,9,10
+-Chantal,real madrid,delantero,10,15
+-Fabrega,jaen,delantero,7,50
+-Raul,villareal,delantero,11,41
+-Juan,fc barcelona,centrocampista,5,100
+-Jesus,real madrid,centrocampista,8,125
+-Pulido,sevilla,centrocampista,12,80
+-Zuzu,cadiz,centrocampista,13,19
+-Mario,fc barcelona,centrocampista,16,56
+-Lucas,real madrid,centrocampista,15,15
+-Aitor,Toledo,centrocampista,18,22
+-Jesus,atletico de madrid,centrocampista,14,75
+-Andres,fc barcelona,defensa,3,10
+-Heredia,real madrid,defensa,2,23
+-Ziki,fc barcelona,defensa,4,42
+-Gabi,valladoliz,defensa,6,63
+-Lionel,Lugo,defensa,31,65
+-Juandi,Murcia,defensa,22,2
+-Unai,fc barcelona,defensa,16,28
+-Clemente,real madrid,defensa,17,33
+-Tower,recreativo de huelva,portero,1,23
+-Guillermo,real madrid,portero,0,5
