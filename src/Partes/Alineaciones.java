@@ -4,84 +4,61 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Scanner;
 
 public class Alineaciones {
+	
+	static ArrayList<JugadorSeleccion> delanteros= new ArrayList<JugadorSeleccion>();
+	static ArrayList<JugadorSeleccion> centrocampista= new ArrayList<JugadorSeleccion>();
+	static ArrayList<JugadorSeleccion> defensas= new ArrayList<JugadorSeleccion>();
+	static ArrayList<JugadorSeleccion> porteros= new ArrayList<JugadorSeleccion>();
 
 	public static void main(String[] args) {
-		
-		//JugadorSeleccion jugador = null;
-//		String arrayJugador [];
-		ArrayList<JugadorSeleccion> delanteros;
-		ArrayList<JugadorSeleccion> centrocampista;
-		ArrayList<JugadorSeleccion> defensas;
-		ArrayList<JugadorSeleccion> porteros;
-		
-		defensas = new ArrayList<JugadorSeleccion>();
-		delanteros = new ArrayList<JugadorSeleccion>();
-		
-//		ArrayList<String> 
-//		 
-	
+		 
 	try {
 		 	String linea1;
-	        
-			File miArchivo = new File("./jugadores.txt");
+			File miArchivo = new File("C:/archivosJava/jugadores.txt");
 			FileReader lector = new FileReader(miArchivo);
 			BufferedReader br = new BufferedReader(lector);
+			JugadorSeleccion jugador = null;
+			String arrayJugador [];
+			
+			
+	
 			 	
 			while (( linea1 = br.readLine())!=null){
 					if( linea1.startsWith("-")){
-					linea1 = linea1.substring(1);
 //					System.out.println(linea1);
-					String arrayJugador[]=linea1.split(",");
-//					System.out.println(arrayJugador[2]);
+					arrayJugador=linea1.substring(1).split(",");
 					
-						if( arrayJugador[2].equals( "delantero")==true){
-							JugadorSeleccion jugador = new JugadorSeleccion(arrayJugador); 
-							//delanteros = new ArrayList<JugadorSeleccion>();
-							
-							//for (int i=1; i<=4; i++){
-							
-							delanteros.add(jugador); 
-							//}
-							
-//							delanteros.add(jugador);
+					jugador = new JugadorSeleccion(arrayJugador); 
+					
+//					System.out.println(jugador.toString());
+					
+						if( jugador.getPosicion().equals( "delantero")){
+		
+							delanteros.add(jugador);
 							
 //							System.out.println(jugador.getNombre());
-//							for(JugadorSeleccion elemento : delanteros){
-//								System.out.println(elemento.getDorsal());
-//							}
 						}
 						
-						if(arrayJugador[2].equals("centroCampista")==true){
-							
-							JugadorSeleccion jugador = new JugadorSeleccion(arrayJugador); 
-							 
-							centrocampista = new ArrayList<JugadorSeleccion>();
+						else if(jugador.getPosicion().equals("centrocampista")){
 							 
 							 centrocampista.add(jugador);
 							 
-							 System.out.println(jugador.getDorsal());
+//							 System.out.println(jugador.getDorsal());
 						}
 						
-						if( linea1.toLowerCase().indexOf( "defensa".toLowerCase())!=-1){
-							
-							JugadorSeleccion jugador = new JugadorSeleccion(arrayJugador); 
-							 
-							 defensas = new ArrayList<JugadorSeleccion>();
+						else if(jugador.getPosicion().equals("defensa")){
 							 
 							 defensas.add(jugador);
 							 
 //							 System.out.println(jugador.getDorsal());
 						}
 						
-						if( linea1.toLowerCase().indexOf( "portero".toLowerCase())!=-1){
-							
-							JugadorSeleccion jugador = new JugadorSeleccion(arrayJugador); 
-							 
-							 porteros = new ArrayList<JugadorSeleccion>();
+						else if(jugador.getPosicion().equals("portero")){
 							 
 							 porteros.add(jugador);
 							 
@@ -89,22 +66,75 @@ public class Alineaciones {
 						}
 						
 					}
-				}	
-				br.close();
+				}
+//			for(int i = 0; i<porteros.size(); i++){
+//				System.out.println(porteros.get(i).getNombre());//con el for recorre las posiciones y las muestra.
+//			}
+// AQUI EMPEZAMOS CON LA SELECCION DE LA LA ALINEACION 			
+			Scanner lector1=new Scanner(System.in);
+			
+			int lineaDefensiva;
+			int lineaCentral;
+			int lineaDelantera;
+//AQUI LO REPIDO MIENTRAS EL NUMEO TOTAL DE JUGADORES SEA DISTINTO DE 10			
+			do { 
+				
+			System.out.println("El total de jugadores de la alineacion ha de ser 10");
+				
+			System.out.println("\n¿Cuantos defensas quiere?");
+			lineaDefensiva=lector1.nextInt();
+			
+			
+			System.out.println("¿Cuantos centrocampistas quiere?");
+			lineaCentral=lector1.nextInt();
+			
+		
+			System.out.println("¿Cuantos delanteros quiere?");
+			lineaDelantera=lector1.nextInt();
+			
+			} while (lineaDefensiva+lineaCentral+lineaDelantera !=10);
+			
+			
+// EMPEZAMOS LA ELECCION DE LOS JUGADORES POR CADA LINEA DEL EQUIPO REPITIENDOLO SEGUN EL NUMERO DE JUGADAORES ELEJIDOS EN CADA LINES
+			
+			//DEFENSAS
+			
+			System.out.println("Elija los defensas:\n ");
+			
+			for (int i=0; i<lineaDefensiva; i++){//repito la eleccion tantas veces como numero de defensas puso
+				
+				for (int j = 0; j< defensas.size();j++){
+					
+					System.out.println( defensas.get(j).getDorsal());
+				
+				}
+					String defensaElejido = lector1.next();
+					System.out.println(defensaElejido);
+					
+					defensas.remove(jugador.getDorsal().equals(defensaElejido));
+					
+					
 			}
+			
+			// CENTROCAMPISTAS
+			
+			System.out.println("Elija un centrocampista:\n ");
+			
+			for (int i = 0; i< centrocampista.size();i++){
+				
+				System.out.println( centrocampista.get(i).getNombre());
+				
+				
+			}
+			br.close();
+			
+		}
 				catch (IOException e) {
 					System.out.println("El archivo no se encuentra");
 				}
-	System.out.println(delanteros.size());
-	Iterator<JugadorSeleccion> nombreIterator =delanteros.iterator();
-	while(nombreIterator.hasNext()){
-		JugadorSeleccion elemento = nombreIterator.next();
-		System.out.print(elemento.dorsal+" / ");
-	}
 
 	}
 }
-
 
 
 
